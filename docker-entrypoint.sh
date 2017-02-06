@@ -13,6 +13,11 @@ REXRAY_PREEMPT="${REXRAY_PREEMPT:-false}"
 
 if [ "$1" = 'rexray' ]; then
 
+    driver="${REXRAY_DRIVER}"
+    if [ "$driver" ]; then
+        sed -ri 's/driver/'"${driver}"'/g' /etc/rexray/rexray.yml
+	fi	
+
 	for rexray_option in \
 		driver \
 		fsType \
