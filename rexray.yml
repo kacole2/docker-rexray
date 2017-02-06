@@ -1,0 +1,20 @@
+rexray:
+  loglevel: warn
+  modules:
+    default-docker:
+      disabled: true
+    driver-module:
+      type: docker
+      host: unix:///run/docker/plugins/rexray-driver.sock
+      libstorage:
+        service: ebs
+libstorage:
+  integration:
+    volume:
+      operations:
+        create:
+          default:
+            fsType: ext4
+        mount:
+          preempt: true
+  service: driver
